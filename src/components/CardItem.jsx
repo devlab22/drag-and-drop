@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { Card, CardHeader, Stack, Typography } from '@mui/material';
+import { Card, CardHeader, CardContent, CardMedia, Stack, Typography } from '@mui/material';
 
-export default function CardItem({ id, text, title, index, moveCard }) {
+export default function CardItem({ id, text, title='', poster, index, moveCard }) {
 
     const [raised, setRaised] = useState(false);
 
@@ -12,13 +12,13 @@ export default function CardItem({ id, text, title, index, moveCard }) {
             <Stack
                 flexDirection='row'
                 gap='5px'
-                sx={{ ml: '5px'}}
+                sx={{ ml: '5px' }}
             >
 
                 <Typography
                     variant="h6"
                     component="h5"
-                    sx={{opacity: '0.7'}}
+                    sx={{ opacity: '0.7' }}
                 >
                     {key}:
                 </Typography>
@@ -36,7 +36,7 @@ export default function CardItem({ id, text, title, index, moveCard }) {
             raised={raised}
             onMouseMove={() => setRaised(true)}
             onMouseOut={() => setRaised(false)}
-            sx={{ width: '500px', m: '5px', cursor: 'pointer' }}
+            sx={{ width: '400px', m: '5px', cursor: 'pointer' }}
         >
             <Stack>
 
@@ -44,15 +44,26 @@ export default function CardItem({ id, text, title, index, moveCard }) {
                     <CardHeader sx={{ textAlign: 'center' }} title={title} />
                 )}
 
-                <Stack
-                    flexDirection='column'
-                    gap='0'
-                >
-                    {renderKeyValue('ID', id)}
-                    {renderKeyValue('Text', text)}
+                {poster && (
+                     <CardMedia
+                     sx={{ height: 140 }}
+                     image={poster}
+                     component='img'
+                     title={title}
+                     alt={title}
+                   />
+                )}
 
-                </Stack>
+                <CardContent>
+                    <Stack
+                        flexDirection='column'
+                        gap='0'
+                    >
+                        {renderKeyValue('ID', id)}
+                        {renderKeyValue('Text', text)}
 
+                    </Stack>
+                </CardContent>
 
             </Stack>
 
