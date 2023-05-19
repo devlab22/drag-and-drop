@@ -1,62 +1,57 @@
 
 import './App.css';
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react';
+import update from 'immutability-helper';
 import { default as CardList} from './components/CardList';
 import { Box } from '@mui/material';
 
+import DB from './data/db.json';
+
 function App() {
 
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      text: 'Write a cool JS library',
-      title: 'Java Script',
-      poster: '/img/network.png'
+  const [cards, setCards] = useState([])
+
+  const moveCard = useCallback(
+    (dragIndex, hoverIndex) => {
+      const dragCard = cards[dragIndex]
+      setCards(
+        update(cards, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, dragCard],
+          ],
+        }),
+      )
     },
-    {
-      id: 2,
-      text: 'Make it generic enough',
-      title: 'Java Script',
-      poster: '/img/network.png'
-    },
-    {
-      id: 3,
-      text: 'Write README',
-      title: 'Java Script',
-      poster: '/img/network.png'
-    },
-    {
-      id: 4,
-      text: 'Create some examples',
-      title: 'Java Script',
-      poster: '/img/network.png'
-    },
-    {
-      id: 5,
-      text:
-        'Spam in Twitter and IRC to promote it (note that this element is taller than the others)',
-        title: 'Java Script',
-        poster: '/img/network.png'
-    },
-    {
-      id: 6,
-      text: '???',
-      title: 'Java Script',
-      poster: '/img/network.png'
-    },
-    {
-      id: 7,
-      text: 'PROFIT',
-      title: 'Java Script',
-      poster: '/img/network.png'
-    },
-  ])
+    [cards],
+  )
+
+  useEffect(() => {
+
+    setCards(DB.data.sort((a,b) => a.seqnr - b.seqnr))
+  }, [])
+
+  const onRatingUpload = (id, rating) => {
+    console.log(id, rating)
+
+    cards.map(card => {
+       
+       if(card.id === id){
+        card.rating = rating
+       }
+
+       return card;
+    })
+
+    
+    
+  }
 
   return (
     <Box
       sx={{mt: '25px'}}
       >
-        <CardList items={cards}/>
+        <CardList items={cards} onRatingUpload={onRatingUpload}/>
     </Box>
   );
 }

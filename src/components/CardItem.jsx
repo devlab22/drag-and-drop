@@ -1,10 +1,26 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { Card, CardHeader, CardContent, CardMedia, Stack, Typography } from '@mui/material';
+import {
+    Card,
+    CardHeader,
+    CardContent,
+    CardMedia,
+    Stack,
+    Typography,
+    Rating,
+    CardActionArea,
+    CardActions,
+    Button
+} from '@mui/material';
 
-export default function CardItem({ id, text, title='', poster, index, moveCard }) {
+export default function CardItem({ id, text, title, poster, rating = 0, seqnr, moveCard, onRatingUpload }) {
 
     const [raised, setRaised] = useState(false);
+    const [ratingValue, setRatingValue] = useState(0)
+
+    useEffect(() => {
+        setRatingValue(rating)
+    }, [rating])
 
     const renderKeyValue = (key, value) => {
 
@@ -38,35 +54,62 @@ export default function CardItem({ id, text, title='', poster, index, moveCard }
             onMouseOut={() => setRaised(false)}
             sx={{ width: '400px', m: '5px', cursor: 'pointer' }}
         >
-            <Stack>
+            <CardActionArea>
+                <Stack>
 
-                {title && (
-                    <CardHeader sx={{ textAlign: 'center' }} title={title} />
-                )}
+                    {title && (
+                        <CardHeader sx={{ textAlign: 'center' }} title={title} />
+                    )}
 
-                {poster && (
-                     <CardMedia
-                     sx={{ height: 140 }}
-                     image={poster}
-                     component='img'
-                     title={title}
-                     alt={title}
-                   />
-                )}
+                    {poster && (
+                        <CardMedia
+                            sx={{ height: 140 }}
+                            image={poster}
+                            component='img'
+                            title={title}
+                            alt={title}
+                        />
+                    )}
 
-                <CardContent>
-                    <Stack
-                        flexDirection='column'
-                        gap='0'
+
+                    <CardContent>
+                        <Stack
+                            flexDirection='column'
+                            gap='0'
+                        >
+                            {renderKeyValue('ID', id)}
+                            {renderKeyValue('Text', text)}
+
+                        </Stack>
+                    </CardContent>
+
+
+
+                </Stack>
+            </CardActionArea>
+
+            <CardActions>
+                <Stack
+                    gap='10px'
+                    flexDirection='row'
+                >
+                    <Rating
+                        name="simple-controlled"
+                        value={ratingValue}
+                        onChange={(event, newValue) => {
+                            setRatingValue(newValue);
+                        }}
+                    />
+
+                    <Button
+                        variant="contained"
+                        onClick={() => onRatingUpload(id, ratingValue)}
                     >
-                        {renderKeyValue('ID', id)}
-                        {renderKeyValue('Text', text)}
+                        Upload
+                    </Button>
+                </Stack>
 
-                    </Stack>
-                </CardContent>
-
-            </Stack>
-
+            </CardActions>
         </Card>
 
     )

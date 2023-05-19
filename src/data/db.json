@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "seqnr": 1,
+      "rating": 0,
+      "text": "Write a cool JS library",
+      "title": "Java Script",
+      "poster": "/img/network.png"
+    },
+    {
+      "id": 2,
+      "seqnr": 2,
+      "rating": 3,
+      "text": "Make it generic enough",
+      "title": "Java Script",
+      "poster": "/img/network.png"
+    },
+    {
+      "id": 3,
+      "seqnr": 3,
+      "rating": 0,
+      "text": "Write README",
+      "title": "Java Script",
+      "poster": "/img/network.png"
+    },
+    {
+      "id": 4,
+      "seqnr": 4,
+      "rating": 4,
+      "text": "Create some examples",
+      "title": "Python",
+      "poster": "/img/network.png"
+    },
+    {
+      "id": 5,
+      "seqnr": 5,
+      "rating": 0,
+      "text": "Spam in Twitter",
+      "title": "Java Script",
+      "poster": "/img/network.png"
+    },
+    {
+      "id": 6,
+      "seqnr": 6,
+      "rating": 0,
+      "text": "???",
+      "title": "Java Script",
+      "poster": "/img/network.png"
+    },
+    {
+      "id": 7,
+      "rating": 0,
+      "seqnr": 7,
+      "text": "PROFIT",
+      "title": "Java Script",
+      "poster": "/img/network.png"
+    }
+  ]
+}
