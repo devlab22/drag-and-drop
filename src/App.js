@@ -32,7 +32,7 @@ function App() {
   }, [])
 
   const onRatingUpload = (id, rating) => {
-    console.log(id, rating)
+    console.log(`id: ${id} rating: ${rating}`)
 
     cards.map(card => {
        

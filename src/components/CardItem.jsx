@@ -52,7 +52,7 @@ export default function CardItem({ id, text, title, poster, rating = 0, seqnr, m
             raised={raised}
             onMouseMove={() => setRaised(true)}
             onMouseOut={() => setRaised(false)}
-            sx={{ width: '400px', m: '5px', cursor: 'pointer' }}
+            sx={{ m: '5px', cursor: 'pointer', width: '350px' }}
         >
             <CardActionArea>
                 <Stack>
@@ -78,6 +78,7 @@ export default function CardItem({ id, text, title, poster, rating = 0, seqnr, m
                             gap='0'
                         >
                             {renderKeyValue('ID', id)}
+                            {renderKeyValue('Seqnr', seqnr)}
                             {renderKeyValue('Text', text)}
 
                         </Stack>
@@ -96,6 +97,8 @@ export default function CardItem({ id, text, title, poster, rating = 0, seqnr, m
                     <Rating
                         name="simple-controlled"
                         value={ratingValue}
+                        max={5}
+                        precision={0.5}
                         onChange={(event, newValue) => {
                             setRatingValue(newValue);
                         }}
