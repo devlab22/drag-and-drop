@@ -1,65 +1,51 @@
 import React from 'react';
 import { Grid, Box, Paper } from '@mui/material';
-import { default as CardItem} from './CardItem'
+import CardItem from './CardItem'
+import DevicesIcon from '@mui/icons-material/Devices';
 
-export default function CardList({ items = [], onRatingUpload }) {
+export default function CardList({ items = [], onRatingUpload, moveCard }) {
 
     return (
         <Box
-        sx={{
-            marginTop: '0px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-        }}
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
         >
-            {/*  <Paper
-                 variant='outlined'
-                    sx={{
-                        width: '98%',
-                        height: '100%',
-                        minHeight: '100%',
-                        minWidth: '450px',
-                        alignItems: 'center',
-                        padding: '10px'
-                       
-                        
-                        
-                    }}
-                    
-                > */}
-            <Grid
-                container
-                spacing={2}
+            <Paper
+                variant='elevation'
                 sx={{
-                    ml: '25px',
-                    display: 'flex',
-                    alignItems: 'center'
+                    width: '97%',
+                    alignItems: 'center',
+                    mt: '15px'
                 }}
+
             >
-               
-                   {/*  <Box
+                <Grid
+                    container
                     sx={{
                         display: 'flex',
-                        flexDirection: 'column',
+                        flexDirection: 'row',
                         gap: '10px',
+                        padding: '10px',
                         alignItems: 'center'
-                    }} 
+                    }}
+                >
+                    {items.map((item, index) => (
+                        <CardItem
+                            key={index}
+                            onRatingUpload={onRatingUpload}
+                           /*  avatar={<DevicesIcon/>}
+                            icon='/img/48/network-nfs-2.png' */
+                            moveCard={moveCard}
+                            index={index}
+                            {...item}
+                        />
+                    ))}
 
-                    >*/}
-                         {items.map(item => (
-                    <CardItem
-                        key={item.id}
-                        onRatingUpload={onRatingUpload}
-                        {...item}
-                    />
-                ))}  
-                    {/* </Box> */}
-                 
-               
-
-            </Grid>
-             {/* </Paper> */}
+                </Grid>
+            </Paper>
         </Box>
     )
 }

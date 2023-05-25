@@ -1,84 +1,84 @@
 {
   "data": [
     {
+      "uuid": "5304A7A7-DD62-4E4A-BF85-E46BD029C0DC",
       "id": 1,
-      "seqnr": 1,
       "rating": 0,
       "text": "Write a cool JS library",
       "title": "Java Script",
-      "poster": "/img/network.png"
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "C6F22A77-CDA3-483B-AB99-5638A305E556",
       "id": 2,
-      "seqnr": 2,
       "rating": 3,
       "text": "Make it generic enough",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "title": "Java",
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "93A00DB7-378D-43D8-9D62-8A22DAE1E45C",
       "id": 3,
-      "seqnr": 3,
       "rating": 0,
       "text": "Write README",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "title": "C++",
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "63C18038-6BC7-484A-BB8C-C8E36086288A",
       "id": 4,
-      "seqnr": 4,
       "rating": 4,
       "text": "Create some examples",
       "title": "Python",
-      "poster": "/img/network.png"
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "14EB8522-7AEF-4A29-8481-3F1AB8432DB6",
       "id": 5,
-      "seqnr": 5,
       "rating": 0,
       "text": "Spam in Twitter",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "title": "ABAP",
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "21EB5855-FD9C-4489-98E8-4B63B5AA013D",
       "id": 6,
-      "seqnr": 6,
       "rating": 0,
       "text": "???",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "title": "UI5",
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "66F165B3-D1F5-41EA-A957-37B34A880366",
       "id": 7,
       "rating": 0,
-      "seqnr": 7,
       "text": "PROFIT",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "title": "HTML",
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "67FD843D-8276-41AC-998C-B22AD784EA27",
       "id": 8,
-      "seqnr": 8,
       "rating": 0,
       "text": "Spam in Twitter",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "title": "CSS 3",
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "1B2E8D25-8D29-4ABE-B276-DE7E5A522E98",
       "id": 9,
-      "seqnr": 9,
       "rating": 0,
-      "text": "???",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "text": "Framework",
+      "title": "React JS",
+      "poster": "/img/poster/network.png"
     },
     {
+      "uuid": "C8E045E2-5930-405F-9616-68053BE35126",
       "id": 10,
       "rating": 0,
-      "seqnr": 10,
       "text": "PROFIT",
-      "title": "Java Script",
-      "poster": "/img/network.png"
+      "title": "MUI",
+      "poster": "/img/poster/network.png"
     }
   ]
 }
