@@ -12,7 +12,7 @@ import DB from './data/db.json';
 
 function App() {
 
-  const [toggleMenu, setToggleMenu] = useState(false)
+  const [toggleMenu, setToggleMenu] = useState(true)
   const [severity, setSeverity] = useState('info')
   const [cards, setCards] = useState([])
   const [msgOpen, setMsgOpen] = useState(false);
@@ -28,7 +28,7 @@ function App() {
           "seqnr": 1,
           "children": [
             {
-              "id": 4,
+              "id": 0,
               "name": 'Item 1.1',
               "seqnr": 1,
             },
@@ -59,6 +59,13 @@ function App() {
                       "id": 11,
                       "name": 'Item 2.1.1.1',
                       "seqnr": 1,
+                      "children": [
+                        {
+                          "id": 11,
+                          "name": 'Item 2.1.1.1',
+                          "seqnr": 1,
+                        }
+                      ]
                     }
                   ]
                 }
@@ -88,7 +95,7 @@ function App() {
 
     setMsg(`id: ${props.id} name: ${props.name}`);
     setMsgTitle('Menu Item');
-    setSeverity('warning')
+    setSeverity('info')
     setMsgOpen(true);
   }
   const moveCard = useCallback(
@@ -151,8 +158,8 @@ function App() {
       return card;
     })
 
-    setMsg([`id: ${id}`, `rating: ${rating}`])
-    //setMsg(`id: ${id} rating: ${rating}`);
+    //setMsg([`id: ${id}`, `rating: ${rating}`])
+    setMsg(`id: ${id} rating: ${rating}`);
     setMsgTitle('Rating');
     setSeverity('info');
     setMsgOpen(true);
@@ -182,18 +189,14 @@ function App() {
         flexDirection='row'
       >
 
-        {!toggleMenu && <Menu items={menu} handleClick={handleOnMenuClick} />}
-
+        {/* {toggleMenu && <Menu items={menu} handleClick={handleOnMenuClick} />} */}
+        <Menu items={menu} handleClick={handleOnMenuClick} toggleMenu={toggleMenu}/>
         <CardList
           items={cards}
           onRatingUpload={onRatingUpload}
           moveCard={onMoveCard}
         />
       </Stack>
-
-
-
-
     </Box>
   );
 }

@@ -13,7 +13,7 @@ export default function CardList({ items = [], onRatingUpload, moveCard }) {
                 alignItems: 'center',
             }}
         >
-            <Paper
+            {/* <Paper
                 variant='elevation'
                 sx={{
                     width: '97%',
@@ -21,7 +21,7 @@ export default function CardList({ items = [], onRatingUpload, moveCard }) {
                     mt: '15px'
                 }}
 
-            >
+            > */}
                 <Grid
                     container
                     sx={{
@@ -36,8 +36,8 @@ export default function CardList({ items = [], onRatingUpload, moveCard }) {
                         <CardItem
                             key={index}
                             onRatingUpload={onRatingUpload}
-                           /*  avatar={<DevicesIcon/>}
-                            icon='/img/48/network-nfs-2.png' */
+                            avatar={<DevicesIcon/>}
+                            // icon='/img/48/network-nfs-2.png'
                             moveCard={moveCard}
                             index={index}
                             {...item}
@@ -45,7 +45,7 @@ export default function CardList({ items = [], onRatingUpload, moveCard }) {
                     ))}
 
                 </Grid>
-            </Paper>
+            {/* </Paper> */}
         </Box>
     )
 }
