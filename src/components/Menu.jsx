@@ -73,10 +73,10 @@ export default function Menu({ items, handleClick = Function.prototype, toggleMe
             if (!menu.expand) {
                 setExpand(node, false);
             }
-        } else {
 
-            handleClick(node);
         }
+
+        handleClick(node);
 
     }
 
@@ -173,9 +173,9 @@ export default function Menu({ items, handleClick = Function.prototype, toggleMe
         RootObject.children.sort((a, b) => a.seqnr - b.seqnr);
         var width = 400;
 
-       /*  if (!toggleMenu) {
-            width = 160;
-        } */
+        /*  if (!toggleMenu) {
+             width = 160;
+         } */
 
         return (
             <List

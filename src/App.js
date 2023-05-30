@@ -17,6 +17,7 @@ function App() {
   const [cards, setCards] = useState([])
   const [msgOpen, setMsgOpen] = useState(false);
   const [msg, setMsg] = useState();
+  const [title, setTitle] = useState('')
   const [msgTitle, setMsgTitle] = useState('')
   const [menu, setMenu] = useState(
     {
@@ -90,13 +91,19 @@ function App() {
     })
 
 
-
+  const showPopup = (message, title, severity='info') => {
+    setMsg(message);
+    setMsgTitle(title);
+    setSeverity(severity)
+    setMsgOpen(true);
+  }
   const handleOnMenuClick = (props) => {
 
-    setMsg(`id: ${props.id} name: ${props.name}`);
-    setMsgTitle('Menu Item');
-    setSeverity('info')
-    setMsgOpen(true);
+   // showPopup(`id: ${props.id} name: ${props.name}`, 'Menu Item')
+    if(props.children){
+      return;
+    }
+    setTitle(props.name);
   }
   const moveCard = useCallback(
     (drag, drop) => {
@@ -159,10 +166,7 @@ function App() {
     })
 
     //setMsg([`id: ${id}`, `rating: ${rating}`])
-    setMsg(`id: ${id} rating: ${rating}`);
-    setMsgTitle('Rating');
-    setSeverity('info');
-    setMsgOpen(true);
+    showPopup(`id: ${id} rating: ${rating}`, 'Rating')
 
   }
 
@@ -184,7 +188,7 @@ function App() {
         />
       }
 
-      <ToolBar handleMenuClick={handleMenuClick} />
+      <ToolBar handleMenuClick={handleMenuClick} title={title} />
       <Stack
         flexDirection='row'
       >
