@@ -135,16 +135,6 @@ function App() {
 
     setCards(items)
 
-    /*  setCards(
-       update(cards, {
-         $splice: [
-           [drag, 1],
-           [drop, 0, dragCard],
-         ],
-       }),
-     ) */
-
-    // setReload(!reload)
   }
 
   useEffect(() => {
@@ -156,17 +146,11 @@ function App() {
 
   const onRatingUpload = (id, rating) => {
 
-    cards.map(card => {
-
-      if (card.id === id) {
-        card.rating = rating
-      }
-
-      return card;
-    })
+    const card = cards.find(item => item.id === id);
+    card.rating = rating;
 
     //setMsg([`id: ${id}`, `rating: ${rating}`])
-    showPopup(`id: ${id} rating: ${rating}`, 'Rating')
+    showPopup(`${card.title} => rating: ${rating}`, 'Rating')
 
   }
 
