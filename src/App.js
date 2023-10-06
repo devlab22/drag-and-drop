@@ -21,6 +21,8 @@ function App() {
   const [msgTitle, setMsgTitle] = useState('')
   const [menu, setMenu] = useState(
     {
+      "id": 0,
+      "name": "root",
       "children": [
         {
           "id": 1,

@@ -14,7 +14,7 @@ import {
     Avatar
 } from '@mui/material';
 
-export default function CardItem({ id, text, title, poster, icon, avatar, rating = 0, index, moveCard, onRatingUpload }) {
+export default function CardItem({ id, text, title, poster, icon, avatar, rating = 0, index, moveCard, onRatingUpload=Function.prototype }) {
 
     const [raised, setRaised] = useState(false);
     const [ratingValue, setRatingValue] = useState(0);

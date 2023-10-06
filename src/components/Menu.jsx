@@ -9,6 +9,11 @@ import SendIcon from '@mui/icons-material/Send';
 import StarBorder from '@mui/icons-material/StarBorder';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 
+import { TreeView } from '@mui/x-tree-view/TreeView';
+import { TreeItem } from '@mui/x-tree-view/TreeItem';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 
 export default function Menu({ items, handleClick = Function.prototype, toggleMenu = true }) {
 
@@ -118,7 +123,10 @@ export default function Menu({ items, handleClick = Function.prototype, toggleMe
                         component="div"
                         color="primary"
                         inset={toggleMenu}
-                        sx={{ fontSize: '1rem' }}
+                        sx={{ 
+                            fontSize: '1.2rem', 
+                            fontWeight: "bold" 
+                        }}
                     >
                         {node.subheader}
                     </ListSubheader>
@@ -171,19 +179,15 @@ export default function Menu({ items, handleClick = Function.prototype, toggleMe
     const DynamicNestedItems = (RootObject) => {
 
         RootObject.children.sort((a, b) => a.seqnr - b.seqnr);
-        var width = 400;
-
-        /*  if (!toggleMenu) {
-             width = 160;
-         } */
 
         return (
             <List
                 sx={{
-                    width: `${width}px`,
+                    width: '400px',
+                    minWidth: '250px',
                     position: 'sticky',
                     top: 0,
-                    maxWidth: 560,
+                    maxWidth: '500px',
                     display: `${!toggleMenu ? 'none' : ''}`,
                     bgcolor: 'background.paper'
                 }}
@@ -197,10 +201,56 @@ export default function Menu({ items, handleClick = Function.prototype, toggleMe
         );
     };
 
+    const renderListMenu = () => {
+
+        return (
+            <Box>
+                {DynamicNestedItems(items)}
+            </Box>
+        )
+
+    }
+
+    const renderTree = (nodes) => (
+        <TreeItem 
+            key={nodes.id} 
+            nodeId={nodes.id} 
+            label={nodes.name}
+            disabled={false}
+            
+            >
+          {Array.isArray(nodes.children)
+            ? nodes.children.map((node) => renderTree(node))
+            : null}
+        </TreeItem>
+      );
+
+    const renderTreeMenu = (items) => {
+        
+        items.children.sort((a, b) => a.seqnr - b.seqnr);
+
+        return (
+            <Box sx={{ 
+                position:'sticky',
+                width: '400px',
+                minWidth: '250px',
+                top: 0,
+                bgcolor: 'background.paper'
+                 }}>
+              <TreeView
+                aria-label="rich object"
+                defaultCollapseIcon={<ExpandMoreIcon />}              
+                defaultExpandIcon={<ChevronRightIcon />}
+              >
+                {renderTree(items)}
+              </TreeView>
+            </Box>
+          );
+    }
     return (
-        <Box>
-            {DynamicNestedItems(items)}
-        </Box>
+        <React.Fragment>
+            {renderListMenu(items)}
+        </React.Fragment>
     )
 
 }
