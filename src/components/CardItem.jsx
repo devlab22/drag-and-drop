@@ -10,11 +10,13 @@ import {
     Rating,
     CardActionArea,
     CardActions,
-    Button,
-    Avatar
+   // Button,
+    Avatar,
+    IconButton
 } from '@mui/material';
+import UploadIcon from '@mui/icons-material/Upload';
 
-export default function CardItem({ id, text, title, poster, icon, avatar, rating = 0, index, moveCard, onRatingUpload=Function.prototype }) {
+export default function CardItem({ id, text, title, poster, icon, avatar, rating = 0, index, moveCard, onRatingUpload = Function.prototype }) {
 
     const [raised, setRaised] = useState(false);
     const [ratingValue, setRatingValue] = useState(0);
@@ -90,12 +92,11 @@ export default function CardItem({ id, text, title, poster, icon, avatar, rating
     return (
 
         <Card
-            ref={ref}
+            // ref={ref}
             raised={raised}
             onMouseMove={() => setRaised(true)}
             onMouseOut={() => setRaised(false)}
             sx={{
-                cursor: 'pointer',
                 width: '300px',
                 opacity: isDragging ? 0.7 : 1
             }}
@@ -153,29 +154,26 @@ export default function CardItem({ id, text, title, poster, icon, avatar, rating
                             alt={title}
                         />
                     )}
-
-
-                    <CardContent>
-                        <Stack
-                            flexDirection='column'
-                            gap='0'
-                        >
-                            {renderKeyValue('ID', id)}
-                            {renderKeyValue('Index', index)}
-                            {renderKeyValue('Text', text)}
-
-                        </Stack>
-                    </CardContent>
-
-
-
                 </Stack>
             </CardActionArea>
+
+            <CardContent>
+                <Stack
+                    flexDirection='column'
+                    gap={0}
+                >
+                    {renderKeyValue('ID', id)}
+                    {renderKeyValue('Index', index)}
+                    {renderKeyValue('Text', text)}
+
+                </Stack>
+            </CardContent>
 
             <CardActions>
                 <Stack
                     gap='10px'
                     flexDirection='row'
+                    alignItems='center'
                 >
                     <Rating
                         name="simple-controlled"
@@ -187,12 +185,26 @@ export default function CardItem({ id, text, title, poster, icon, avatar, rating
                         }}
                     />
 
-                    <Button
+                    <IconButton
+                        onClick={() => onRatingUpload(id, ratingValue)}
+                        title='Upload'
+                    >
+                        <Avatar
+                         sx={{
+                            bgcolor: 'primary.main'
+                        }}
+                        >
+                            <UploadIcon />
+                        </Avatar>
+                        
+                    </IconButton>
+                    {/*  <Button
                         variant="contained"
+                        startIcon={<UploadIcon/>}
                         onClick={() => onRatingUpload(id, ratingValue)}
                     >
-                        Upload
-                    </Button>
+                        
+                    </Button> */}
                 </Stack>
 
             </CardActions>

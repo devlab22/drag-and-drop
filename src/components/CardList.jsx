@@ -36,9 +36,9 @@ export default function CardList({ items = [], onRatingUpload, moveCard }) {
                         <CardItem
                             key={index}
                             onRatingUpload={onRatingUpload}
-                            avatar={<DevicesIcon/>}
+                           // avatar={<DevicesIcon/>}
                             // icon='/img/48/network-nfs-2.png'
-                            moveCard={moveCard}
+                           // moveCard={moveCard}
                             index={index}
                             {...item}
                         />
